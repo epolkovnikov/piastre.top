@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piastre.Top! Pirates' Investment Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9W9C6S00NS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9W9C6S00NS');
+</script>
+<body>
+    <header class="header-strip">
+        <div class="header-content">
+            <h1>Top Piastre!</h1>
+        </div>
+    </header>
+    <h1 class="calculator-title">Compound Interest Calculator</h1>
+    <div class="textcontainer">
+        <p>Aye, matey! Compound interest is when yer earnings grow not just on the gold ye stashed, but also on past plunder. Unlike simple interest, which sticks to the original stash, compound interest makes yer piastres swell faster over time!</p>
+        <p>That is: Compound interest is calculated on the initial principal and also on the accumulated interest of previous periods of a deposit or a loan. It differs from simple interest, which is calculated only on the principal amount.</p>
+    </div>
+    <div class="container">
+        <form id="investmentForm">
+            <div class="input-group">
+                <label for="investmentAmount">Investment Amount ($): <span id="formattedAmount" class="formatted-value"></span></label>
+                <div class="input-with-format">
+                    <input type="number" id="investmentAmount" required min="0" step="0.01">
+                    
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="annualInterest">Annual Interest Rate (%)</label>
+                <input type="number" id="annualInterest" required min="0" step="0.01">
+            </div>
+            <div class="input-group">
+                <label for="months">Months to Invest</label>
+                <input type="number" id="months" required min="1">
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div class="result">
+            <h2>Result</h2>
+            <p id="totalYieldLine">Compound Interest Yield: <span id="totalYield">$0.00</span></p>
+            <p id="simpleInterestLine">Simple Interest Yield: <span id="simpleInterest">$0.00</span></p>
+            <p id="differenceLine">Difference: <span id="difference">$0.00</span></p>
+            <h2>Compound Interest Monthly Details</h2>
+            <div id="monthlyDetails"></div>
+        </div>
+    </div>
+    <footer>
+        <p>(c) <a href="https://github.com/epolkovnikov">Evgeny Polkovnikov</a>, 2025 | <a href="privacy.html">Privacy Policy and Liability Disclaimer</a></p>
+    </footer>
+    <script src="script.js"></script>
+    <div><script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="epecom" data-description="Support me on Buy me a coffee!" data-message="Some coffee is welcome!" data-color="#ffa200" data-position="Right" data-x_margin="18" data-y_margin="18"></script></div>
+
+</body>
+</html>
