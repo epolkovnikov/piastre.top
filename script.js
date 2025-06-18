@@ -17,14 +17,40 @@ function formatInvestmentAmount(input) {
     }
 }
 
+// Format years display on months input
+function formatYearsDisplay(input) {
+    if (input.value === '') {
+        document.getElementById('formattedYears').textContent = '';
+        return;
+    }
+    
+    const months = parseInt(input.value);
+    if (!isNaN(months) && months > 0) {
+        const years = months / 12;
+        // Format: integers without decimal, floats with 1 decimal place
+        const formattedYears = years % 1 === 0 ? years : years.toFixed(1);
+        document.getElementById('formattedYears').textContent = ` (${formattedYears} years)`;
+    }
+}
+
 // Add input event listener for real-time formatting
 document.getElementById('investmentAmount').addEventListener('input', function(e) {
     formatInvestmentAmount(this);
 });
 
+// Add input event listener for months to update years display
+document.getElementById('months').addEventListener('input', function(e) {
+    formatYearsDisplay(this);
+});
+
 // Keep blur event for when focus is lost
 document.getElementById('investmentAmount').addEventListener('blur', function(e) {
     formatInvestmentAmount(this);
+});
+
+// Also format years on blur
+document.getElementById('months').addEventListener('blur', function(e) {
+    formatYearsDisplay(this);
 });
 
 document.getElementById('investmentForm').addEventListener('submit', function(e) {
