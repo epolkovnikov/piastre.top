@@ -159,7 +159,7 @@ h2 {
     margin-top: 0.5rem;
 }
 
-#totalYieldLine, #simpleInterestLine, #differenceLine {
+#totalYieldLine, #simpleInterestLine, #differenceLine, #payoffMonths, #payoffYears, #totalSavings {
     margin-bottom: 0.5rem;
 }
 
@@ -187,4 +187,23 @@ h2 {
     margin-left: 10px;
     color: #666;
     font-size: 1rem;
+}
+
+/* Payoff calculator specific styles */
+.monthly-detail span:last-child {
+    font-weight: bold;
+}
+
+.monthly-detail span:last-child:contains("PAID OFF!") {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Style for the note about additional months */
+.monthly-detail span[colspan="3"] {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 0.5rem 0;
 }
