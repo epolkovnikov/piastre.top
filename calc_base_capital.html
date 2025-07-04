@@ -59,7 +59,7 @@
             </p>
             <p class="result-summary-line">
                 Gross Total Monthly Income: 
-                <span id="totalMonthlyIncomeValue" class="positive-capital">$0.00</span>
+                <span id="monthlyIncomeValue" class="positive-capital">$0.00</span>
             </p>
             <p>Gross = before Mandatory Expenses are deducted</p>
         </div>
@@ -80,13 +80,7 @@
             const monthlyIncome = parseFloat(document.getElementById('desiredMonthlyIncome').value) || 0;
             const annualInterest = parseFloat(document.getElementById('annualInterestRate').value) || 0;
             const mandatoryExpenses = parseFloat(document.getElementById('mandatoryExpenses').value) || 0;
-            if (monthlyIncome <= 0 || annualInterest <= 0) {
-                document.getElementById('baseAmount').textContent = "$0.00";
-                document.getElementById('annualIncomeValue').textContent = "$0.00";
-                document.getElementById('monthlyIncomeValue').textContent = "$0.00";
-                document.getElementById('totalMonthlyIncomeValue').textContent = "$0.00";
-                return;
-            }
+
             // Calculate total monthly income needed (gross, before expenses)
             const totalMonthlyIncome = monthlyIncome / (1 - mandatoryExpenses / 100);
             const annualIncome = totalMonthlyIncome * 12;
