@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piastre.Top! Base Capital Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9W9C6S00NS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9W9C6S00NS');
+</script>
+<body>
+    <header class="header-strip">
+        <div class="header-content">
+            <h1>Top Piastre!</h1>
+        </div>
+    </header>
+    <div align="center">
+        <a href="index.html">Compound Interest</a> | <a href="calc_base_capital.html">Base Capital</a> | <a href="calc_energy_savings_payoff.html">Energy Savings Payoff</a>
+    </div>
+    <h1 class="calculator-title">What is Base Capital to Live Off?</h1>
+    <div class="textcontainer">
+        <p>Arrr, so ye be thinkin’ o’ hangin’ up yer boots and quittin’ the crew, eh? Then tell me this, matey: how big must yer treasure be to sail easy? How much plunder must ye stash away, so the riches it earns be enough to keep yer belly full and rum stocked, without liftin’ another finger? That be the true measure of freedom on the high seas!</p>
+        <p>Want to live off your investments? This calculator tells you how much capital you need to generate your desired monthly income, given an annual interest rate.</p>
+        <p>For example: If you want $2,000/month and expect a 5% annual return on your base capital, how much do you need invested?</p>
+        <p>Enter your desired monthly income and expected annual interest rate below.</p>
+    </div>
+    <div class="container">
+        <form id="passiveBaseForm">
+            <div class="input-group">
+                <label for="desiredMonthlyIncome">Desired Monthly Income ($): <span id="desiredMonthlyIncomeFormatted"></span></label>
+                <input type="number" id="desiredMonthlyIncome" required min="0" step="0.01">
+            </div>
+            <div class="input-group">
+                <label for="mandatoryExpenses">Mandatory Expenses % (tax, health):</label>
+                <input type="number" id="mandatoryExpenses" required min="0" max="100" step="0.01" value="0">
+            </div>
+            <div class="input-group">
+                <label for="annualInterestRate">Expected Annual Interest Rate (%):</label>
+                <input type="number" id="annualInterestRate" required min="0.01" step="0.01">
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div class="result">
+            <h2>Result</h2>
+            <p class="result-summary-line">
+                Required Capital: 
+                <span id="baseAmount" class="positive-capital">$0.00</span>
+            </p>
+            <p class="result-summary-line">
+                Gross Annual Income: 
+                <span id="annualIncomeValue" class="positive-capital">$0.00</span>
+            </p>
+            <p class="result-summary-line">
+                Gross Total Monthly Income: 
+                <span id="totalMonthlyIncomeValue" class="positive-capital">$0.00</span>
+            </p>
+            <p>Gross = before Mandatory Expenses are deducted</p>
+        </div>
+    </div>
+    <footer>
+        <p>(c) <a href="https://github.com/epolkovnikov">Evgeny Polkovnikov</a>, 2025 | <a href="privacy.html">Privacy Policy and Liability Disclaimer</a></p>
+    </footer>
+    <script>
+        // Format and display the desiredMonthlyIncome as user types
+        document.getElementById('desiredMonthlyIncome').addEventListener('input', function() {
+            const val = parseFloat(this.value);
+            document.getElementById('desiredMonthlyIncomeFormatted').textContent = 
+                (val && val > 0) ? val.toLocaleString(undefined, {style: 'currency', currency: 'USD'}) : '';
+        });
+
+        document.getElementById('passiveBaseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const monthlyIncome = parseFloat(document.getElementById('desiredMonthlyIncome').value) || 0;
+            const annualInterest = parseFloat(document.getElementById('annualInterestRate').value) || 0;
+            const mandatoryExpenses = parseFloat(document.getElementById('mandatoryExpenses').value) || 0;
+            if (monthlyIncome <= 0 || annualInterest <= 0) {
+                document.getElementById('baseAmount').textContent = "$0.00";
+                document.getElementById('annualIncomeValue').textContent = "$0.00";
+                document.getElementById('monthlyIncomeValue').textContent = "$0.00";
+                document.getElementById('totalMonthlyIncomeValue').textContent = "$0.00";
+                return;
+            }
+            // Calculate total monthly income needed (gross, before expenses)
+            const totalMonthlyIncome = monthlyIncome / (1 - mandatoryExpenses / 100);
+            const annualIncome = totalMonthlyIncome * 12;
+            const requiredBase = annualIncome / (annualInterest / 100);
+            document.getElementById('baseAmount').textContent = requiredBase.toLocaleString(undefined, {style: 'currency', currency: 'USD'});
+            document.getElementById('annualIncomeValue').textContent = (totalMonthlyIncome * 12).toLocaleString(undefined, {style: 'currency', currency: 'USD'});
+            document.getElementById('monthlyIncomeValue').textContent = monthlyIncome.toLocaleString(undefined, {style: 'currency', currency: 'USD'});
+            document.getElementById('totalMonthlyIncomeValue').textContent = totalMonthlyIncome.toLocaleString(undefined, {style: 'currency', currency: 'USD'});
+        });
+    </script>
+    <div>
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="epecom" data-description="Support me on Buy me a coffee!" data-message="Some coffee is welcome!" data-color="#ffa200" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+    </div>
+</body>
+</html>

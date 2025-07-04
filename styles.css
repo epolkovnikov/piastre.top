@@ -145,11 +145,7 @@ h2 {
     margin-bottom: 1rem;
 }
 
-#totalYield, #simpleInterest {
-    font-weight: bold;
-    font-size: 1rem;
-    color: #4CAF50;
-}
+
 
 #monthlyDetails {
     margin-bottom: 0.5rem;
@@ -163,8 +159,9 @@ h2 {
     margin-bottom: 0.5rem;
 }
 
-#simpleInterest, #difference {
+.positive-capital {
     font-weight: bold;
+    font-size: 1.2rem;
     color: #4CAF50;
 }
 
@@ -206,4 +203,9 @@ h2 {
     color: #666;
     font-style: italic;
     padding: 0.5rem 0;
+}
+
+.result-summary-line {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
